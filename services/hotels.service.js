@@ -8,6 +8,7 @@ module.exports = {
 	mixins: [database],
 	adapter: new DynamoAdapter({
 		aws: {},
+		shouldCreateTable: true,
 	}),
 	model: dynamodb.define("hotel", {
 		hashKey: "id",
