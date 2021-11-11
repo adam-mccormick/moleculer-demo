@@ -6,7 +6,9 @@ const Joi = require("joi");
 module.exports = {
 	name: "hotels",
 	mixins: [database],
-	adapter: new DynamoAdapter({}),
+	adapter: new DynamoAdapter({
+		aws: {},
+	}),
 	model: dynamodb.define("hotel", {
 		hashKey: "id",
 		schema: {
