@@ -35,7 +35,7 @@ module.exports = {
 				path: "/hello"
 			},
 			async handler() {
-				return "Hello Moleculer";
+				return "Hello AWS App Runner";
 			}
 		},
 
