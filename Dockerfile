@@ -7,7 +7,7 @@ RUN mkdir /service
 WORKDIR /service
 
 COPY package.json package-lock.json ./
-
+RUN npm i npm -g
 RUN npm ci --production
 
 COPY . /service
