@@ -27,7 +27,7 @@ jobs:
       - name: Build, tag, and push the image to Amazon ECR
         id: build-image
         env:
-          ECR_REGISTRY: public.ecr.aws/d3h9y8x1/
+          ECR_REGISTRY: public.ecr.aws/d3h9y8x1
           ECR_REPOSITORY: moleculer-demo
           IMAGE_TAG: 1.0
         run: |
