@@ -2,7 +2,7 @@ name: Node Project `my-app` CI on ECR
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   deploy:
