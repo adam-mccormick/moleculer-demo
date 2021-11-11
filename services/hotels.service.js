@@ -7,7 +7,9 @@ module.exports = {
 	name: "hotels",
 	mixins: [database],
 	adapter: new DynamoAdapter({
-		aws: {},
+		aws: {
+			region: "us-east-2"
+		},
 	}),
 	model: dynamodb.define("hotel", {
 		hashKey: "id",
@@ -20,13 +22,18 @@ module.exports = {
 	}),
 
 	async started() {
-		await this.model.createTable().catch((err) => {
-			if (err.code === "ResourceInUseException") {
-				return;
-			}
+		try {
+			await this.adapter.model.createTable({}, (err) => {
+				if (err.code !== "ResourceInUseException") {
+					this.logger.error(err);
+				}
+			});
+		}
 
-			throw err;
-		});
-	}
+		catch(err){
+			if (err.code !== "ResourceInUseException")
+				throw err;
+		}
+	},
 };
 
